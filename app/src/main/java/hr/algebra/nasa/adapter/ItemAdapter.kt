@@ -27,9 +27,9 @@ class ItemAdapter(
         private val ivItem = itemView.findViewById<ImageView>(R.id.ivItem)
         private val tvItem = itemView.findViewById<TextView>(R.id.tvItem)
         fun bind(item: Item) {
-            tvItem.text = item.title
+            tvItem.text = item.binomialName
             Picasso.get()
-                .load(File(item.picturePath))
+                .load(File(item.imageSrc))
                 .error(R.drawable.nasa)
                 .transform(RoundedCornersTransformation(50, 5))
                 .into(ivItem)
@@ -77,7 +77,7 @@ class ItemAdapter(
             null
         )
         items.removeAt(position)
-        File(item.picturePath).delete()
+        File(item.imageSrc).delete()
         notifyDataSetChanged()
     }
 }

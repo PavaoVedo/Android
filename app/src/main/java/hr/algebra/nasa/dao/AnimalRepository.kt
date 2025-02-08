@@ -3,7 +3,7 @@ package hr.algebra.nasa.dao
 import android.content.ContentValues
 import android.database.Cursor
 
-interface NasaRepository {
+interface AnimalRepository {
     fun delete(selection: String?, selectionArgs: Array<String>?): Int
     fun insert(values: ContentValues?): Long
     fun query(

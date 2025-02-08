@@ -6,7 +6,7 @@ import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
-import hr.algebra.nasa.dao.NasaRepository
+import hr.algebra.nasa.dao.AnimalRepository
 import hr.algebra.nasa.factory.getNasaRepository
 import hr.algebra.nasa.model.Item
 
@@ -26,7 +26,7 @@ private val URI_MATCHER = with(UriMatcher(UriMatcher.NO_MATCH)){
 
 class NasaProvider : ContentProvider() {
 
-    private lateinit var repository: NasaRepository
+    private lateinit var repository: AnimalRepository
 
     override fun delete(uri: Uri, selection: String?, selectionArgs: Array<String>?): Int {
         when(URI_MATCHER.match(uri)) {

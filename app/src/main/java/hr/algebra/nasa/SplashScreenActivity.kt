@@ -6,7 +6,7 @@ import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import hr.algebra.nasa.databinding.ActivitySplashScreenBinding
-import hr.algebra.nasa.api.NasaWorker
+import hr.algebra.nasa.api.AnimalWorker
 import hr.algebra.nasa.framework.applyAnimation
 import hr.algebra.nasa.framework.callDelayed
 import hr.algebra.nasa.framework.getBooleanPreference
@@ -45,7 +45,7 @@ class SplashScreenActivity : AppCompatActivity() {
                     enqueueUniqueWork(
                         DATA_IMPORTED,
                         ExistingWorkPolicy.KEEP,
-                        OneTimeWorkRequest.Companion.from(NasaWorker::class.java)
+                        OneTimeWorkRequest.Companion.from(AnimalWorker::class.java)
                     )
                 }
 

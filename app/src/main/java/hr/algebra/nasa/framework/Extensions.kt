@@ -86,10 +86,13 @@ fun Context.fetchItems(): MutableList<Item>{
     while(cursor != null && cursor.moveToNext()) {
         items.add(Item(
             cursor.getLong(cursor.getColumnIndex(Item::_id.name)),
-            cursor.getString(cursor.getColumnIndex(Item::title.name)),
-            cursor.getString(cursor.getColumnIndex(Item::explanation.name)),
-            cursor.getString(cursor.getColumnIndex(Item::picturePath.name)),
-            cursor.getString(cursor.getColumnIndex(Item::date.name)),
+            cursor.getString(cursor.getColumnIndex(Item::binomialName.name)),
+            cursor.getString(cursor.getColumnIndex(Item::commonName.name)),
+            cursor.getString(cursor.getColumnIndex(Item::location.name)),
+            cursor.getString(cursor.getColumnIndex(Item::wikiLink.name)),
+            cursor.getString(cursor.getColumnIndex(Item::lastRecord.name)),
+            cursor.getString(cursor.getColumnIndex(Item::imageSrc.name)),
+            cursor.getString(cursor.getColumnIndex(Item::shortDesc.name)),
             cursor.getInt(cursor.getColumnIndex(Item::read.name)) == 1
         ))
     }

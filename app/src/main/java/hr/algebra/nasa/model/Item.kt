@@ -2,9 +2,12 @@ package hr.algebra.nasa.model
 
 data class Item(
     var _id: Long?,
-    val title: String,
-    val explanation: String,
-    val picturePath: String,
-    val date: String,
+    var binomialName: String,
+    var commonName: String,
+    var location: String,
+    var wikiLink: String,
+    var lastRecord: String,
+    var imageSrc: String,
+    var shortDesc: String,
     var read: Boolean
 )

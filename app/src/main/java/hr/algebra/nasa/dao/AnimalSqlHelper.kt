@@ -8,24 +8,27 @@ import android.database.sqlite.SQLiteOpenHelper
 import hr.algebra.nasa.model.Item
 
 private const val DB_NAME = "items.db"
-private const val DB_VERSION = 1
+private const val DB_VERSION = 5
 private const val TABLE_NAME = "items"
 private val CREATE_TABLE = "create table $TABLE_NAME( " +
         "${Item::_id.name} integer primary key autoincrement, " +
-        "${Item::title.name} text not null, " +
-        "${Item::explanation.name} text not null, " +
-        "${Item::picturePath.name} text not null, " +
-        "${Item::date.name} text not null, " +
+        "${Item::binomialName.name} text not null, " +
+        "${Item::commonName.name} text not null, " +
+        "${Item::location.name} text not null, " +
+        "${Item::wikiLink.name} text not null, " +
+        "${Item::lastRecord.name} text not null, " +
+        "${Item::imageSrc.name} text not null, " +
+        "${Item::shortDesc.name} text not null, " +
         "${Item::read.name} integer not null" +
         ")"
 private const val DROP_TABLE = "drop table $TABLE_NAME"
 
-class NasaSqlHelper(context: Context?) : SQLiteOpenHelper(
+class AnimalSqlHelper(context: Context?) : SQLiteOpenHelper(
     context,
     DB_NAME,
     null,
     DB_VERSION
-), NasaRepository {
+), AnimalRepository {
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(CREATE_TABLE)
     }

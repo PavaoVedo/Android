@@ -27,14 +27,14 @@ class ItemPagerAdapter(
         private val tvDate = itemView.findViewById<TextView>(R.id.tvDate)
         private val tvExplanation = itemView.findViewById<TextView>(R.id.tvExplanation)
         fun bind(item: Item) {
-            tvItem.text = item.title
-            tvDate.text = item.date
-            tvExplanation.text = item.explanation
+            tvItem.text = item.binomialName
+            tvDate.text = item.commonName
+            tvExplanation.text = item.shortDesc
             ivRead.setImageResource(
                 if(item.read) R.drawable.green_flag else R.drawable.red_flag
             )
             Picasso.get()
-                .load(File(item.picturePath))
+                .load(File(item.imageSrc))
                 .error(R.drawable.nasa)
                 .transform(RoundedCornersTransformation(50, 5))
                 .into(ivItem)
