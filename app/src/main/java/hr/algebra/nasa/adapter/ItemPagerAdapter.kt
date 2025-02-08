@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import hr.algebra.nasa.R
-import hr.algebra.nasa.NASA_PROVIDER_CONTENT_URI
+import hr.algebra.nasa.ANIMAL_PROVIDER_CONTENT_URI
 import hr.algebra.nasa.model.Item
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
 import java.io.File
@@ -23,12 +23,16 @@ class ItemPagerAdapter(
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         private val ivItem = itemView.findViewById<ImageView>(R.id.ivItem)
         val ivRead = itemView.findViewById<ImageView>(R.id.ivRead)
-        private val tvItem = itemView.findViewById<TextView>(R.id.tvItem)
-        private val tvDate = itemView.findViewById<TextView>(R.id.tvDate)
+        private val tvName = itemView.findViewById<TextView>(R.id.tvName)
+        private val tvBname = itemView.findViewById<TextView>(R.id.tvBname)
+        private val tvLocation = itemView.findViewById<TextView>(R.id.tvLocation)
+        private val tvLastRecord = itemView.findViewById<TextView>(R.id.tvLastRecord)
         private val tvExplanation = itemView.findViewById<TextView>(R.id.tvExplanation)
         fun bind(item: Item) {
-            tvItem.text = item.binomialName
-            tvDate.text = item.commonName
+            tvName.text = item.binomialName
+            tvBname.text = item.commonName
+            tvLocation.text = item.location
+            tvLastRecord.text = item.lastRecord
             tvExplanation.text = item.shortDesc
             ivRead.setImageResource(
                 if(item.read) R.drawable.green_flag else R.drawable.red_flag
@@ -61,7 +65,7 @@ class ItemPagerAdapter(
         val item = items[position]
         item.read = !item.read
         context.contentResolver.update(
-            ContentUris.withAppendedId(NASA_PROVIDER_CONTENT_URI, item._id!!),
+            ContentUris.withAppendedId(ANIMAL_PROVIDER_CONTENT_URI, item._id!!),
             ContentValues().apply {
                 put(Item::read.name, item.read)
             },

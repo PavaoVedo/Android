@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
 import hr.algebra.nasa.R
 import hr.algebra.nasa.ITEM_POSITION
 import hr.algebra.nasa.ItemPagerActivity
-import hr.algebra.nasa.NASA_PROVIDER_CONTENT_URI
+import hr.algebra.nasa.ANIMAL_PROVIDER_CONTENT_URI
 import hr.algebra.nasa.framework.startActivity
 import hr.algebra.nasa.model.Item
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
@@ -25,7 +25,7 @@ class ItemAdapter(
     : RecyclerView.Adapter<ItemAdapter.ViewHolder>(){
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         private val ivItem = itemView.findViewById<ImageView>(R.id.ivItem)
-        private val tvItem = itemView.findViewById<TextView>(R.id.tvItem)
+        private val tvItem = itemView.findViewById<TextView>(R.id.tvName)
         fun bind(item: Item) {
             tvItem.text = item.binomialName
             Picasso.get()
@@ -72,7 +72,7 @@ class ItemAdapter(
     private fun deleteItem(position: Int) {
         val item = items[position]
         context.contentResolver.delete(
-            ContentUris.withAppendedId(NASA_PROVIDER_CONTENT_URI, item._id!!),
+            ContentUris.withAppendedId(ANIMAL_PROVIDER_CONTENT_URI, item._id!!),
             null,
             null
         )

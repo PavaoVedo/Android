@@ -15,4 +15,8 @@
     <string name="date">Date</string>
     <string name="title">Title</string>
     <string name="explanation">Explanation</string>
+    <string name="binomial_name">Binomial Name</string>
+    <string name="common_name">Common Name</string>
+    <string name="location">Location</string>
+    <string name="last_recorded">Last Recorded</string>
 </resources>

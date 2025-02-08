@@ -3,7 +3,7 @@ package hr.algebra.nasa.api
 import android.content.ContentValues
 import android.content.Context
 import android.util.Log
-import hr.algebra.nasa.NASA_PROVIDER_CONTENT_URI
+import hr.algebra.nasa.ANIMAL_PROVIDER_CONTENT_URI
 import hr.algebra.nasa.AnimalReceiver
 import hr.algebra.nasa.framework.sendBroadcast
 import hr.algebra.nasa.handler.downloadImage
@@ -66,7 +66,7 @@ class AnimalFetcher(private val context: Context) {
                     put(Item::read.name, false)
                 }
                 context.contentResolver.insert(
-                    NASA_PROVIDER_CONTENT_URI,
+                    ANIMAL_PROVIDER_CONTENT_URI,
                     values
                 )
 

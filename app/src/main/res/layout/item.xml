@@ -25,7 +25,7 @@
             android:textSize="@dimen/itemTextSize"
             android:textColor="?colorOnPrimary"
             tools:text="Picture of the day"
-            android:id="@+id/tvItem"
+            android:id="@+id/tvName"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

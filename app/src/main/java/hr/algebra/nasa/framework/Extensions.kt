@@ -13,7 +13,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.core.content.getSystemService
 import androidx.preference.PreferenceManager
-import hr.algebra.nasa.NASA_PROVIDER_CONTENT_URI
+import hr.algebra.nasa.ANIMAL_PROVIDER_CONTENT_URI
 import hr.algebra.nasa.model.Item
 
 fun View.applyAnimation(id: Int) {
@@ -77,7 +77,7 @@ fun callDelayed(delay: Long, work: Runnable) {
 fun Context.fetchItems(): MutableList<Item>{
     val items = mutableListOf<Item>()
     val cursor = contentResolver?.query(
-        NASA_PROVIDER_CONTENT_URI,
+        ANIMAL_PROVIDER_CONTENT_URI,
         null,
         null,
         null,

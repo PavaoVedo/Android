@@ -12,7 +12,7 @@ import hr.algebra.nasa.model.Item
 
 private const val AUTHORITY = "hr.algebra.nasa.api.provider"
 private const val PATH = "items"
-val NASA_PROVIDER_CONTENT_URI: Uri = Uri.parse("content://$AUTHORITY/$PATH")
+val ANIMAL_PROVIDER_CONTENT_URI: Uri = Uri.parse("content://$AUTHORITY/$PATH")
 
 private const val ITEMS = 10
 private const val ITEM_ID = 20
@@ -24,7 +24,7 @@ private val URI_MATCHER = with(UriMatcher(UriMatcher.NO_MATCH)){
 }
 
 
-class NasaProvider : ContentProvider() {
+class AnimalProvider : ContentProvider() {
 
     private lateinit var repository: AnimalRepository
 
@@ -48,7 +48,7 @@ class NasaProvider : ContentProvider() {
 
     override fun insert(uri: Uri, values: ContentValues?): Uri? {
         val id = repository.insert(values)
-        return ContentUris.withAppendedId(NASA_PROVIDER_CONTENT_URI, id)
+        return ContentUris.withAppendedId(ANIMAL_PROVIDER_CONTENT_URI, id)
     }
 
     override fun onCreate(): Boolean {
