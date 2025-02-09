@@ -52,6 +52,9 @@ class HostActivity : AppCompatActivity() {
                 exitApp()
                 return true
             }
+            R.id.miLanguage -> {
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }

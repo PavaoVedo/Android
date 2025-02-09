@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import hr.algebra.nasa.R
@@ -38,7 +37,7 @@ class ItemPagerAdapter(
             tvLastRecord.text = item.lastRecord
             tvExplanation.text = item.shortDesc
             ivRead.setImageResource(
-                if(item.read) R.drawable.green_flag else R.drawable.red_flag
+                if(item.read) R.drawable.like_fill else R.drawable.like_empty
             )
             Picasso.get()
                 .load(File(item.imageSrc))

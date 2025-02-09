@@ -4,6 +4,11 @@
 
     <item
         app:showAsAction="ifRoom"
+        android:icon="@drawable/language"
+        android:id="@+id/miLanguage"
+        android:title="@string/language" />
+    <item
+        app:showAsAction="ifRoom"
         android:icon="@drawable/exit"
         android:id="@+id/miExit"
         android:title="@string/exit" />

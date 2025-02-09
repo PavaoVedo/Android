@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">Nasa</string>
+    <string name="app_name">Animals</string>
     <string name="please_wait">Please wait</string>
     <string name="no_internet">No internet</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="application_made_by_algebra_students">Application made by Algebra students</string>
+    <string name="about_details">An application that gives detailed observations on extinct animal species throughout the earths existence</string>
     <string name="items">Items</string>
     <string name="about">About</string>
     <string name="exit">Exit</string>
@@ -19,4 +19,5 @@
     <string name="common_name">Common Name</string>
     <string name="location">Location</string>
     <string name="last_recorded">Last Recorded</string>
+    <string name="language">Language</string>
 </resources>
