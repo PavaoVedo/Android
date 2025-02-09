@@ -18,7 +18,8 @@
         <activity
             android:name=".ItemPagerActivity"
             android:exported="false" />
-
+        <activity android:name=".LocationWebActivity"
+            android:exported="false"/>
         <provider
             android:name=".AnimalProvider"
             android:authorities="hr.algebra.nasa.api.provider"

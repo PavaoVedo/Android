@@ -3,15 +3,18 @@ package hr.algebra.nasa.adapter
 import android.content.ContentUris
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import hr.algebra.nasa.R
 import hr.algebra.nasa.ANIMAL_PROVIDER_CONTENT_URI
+import hr.algebra.nasa.LocationWebActivity
 import hr.algebra.nasa.model.Item
 import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
 import java.io.File
@@ -25,7 +28,7 @@ class ItemPagerAdapter(
         val ivRead = itemView.findViewById<ImageView>(R.id.ivRead)
         private val tvName = itemView.findViewById<TextView>(R.id.tvName)
         private val tvBname = itemView.findViewById<TextView>(R.id.tvBname)
-        private val tvLocation = itemView.findViewById<TextView>(R.id.tvLocation)
+        internal val tvLocation = itemView.findViewById<TextView>(R.id.tvLocation)
         private val tvLastRecord = itemView.findViewById<TextView>(R.id.tvLastRecord)
         private val tvExplanation = itemView.findViewById<TextView>(R.id.tvExplanation)
         fun bind(item: Item) {
@@ -59,6 +62,15 @@ class ItemPagerAdapter(
             updateItem(position)
         }
         holder.bind(items[position])
+        holder.tvLocation.setOnClickListener { view ->
+            val location = items[position].location // e.g. "Paris, France"
+
+            // Launch the new Activity:
+            val intent = Intent(view.context, LocationWebActivity::class.java).apply {
+                putExtra(LocationWebActivity.EXTRA_LOCATION, location)
+            }
+            view.context.startActivity(intent)
+        }
     }
 
     private fun updateItem(position: Int) {
@@ -74,4 +86,6 @@ class ItemPagerAdapter(
         )
         notifyItemChanged(position)
     }
+
+
 }
