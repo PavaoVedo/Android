@@ -1,14 +1,20 @@
 package hr.algebra.nasa.adapter
 
+import android.annotation.SuppressLint
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.ContentUris
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import hr.algebra.nasa.R
@@ -62,9 +68,8 @@ class ItemPagerAdapter(
         }
         holder.bind(items[position])
         holder.tvLocation.setOnClickListener { view ->
-            val location = items[position].location // e.g. "Paris, France"
+            val location = items[position].location
 
-            // Launch the new Activity:
             val intent = Intent(view.context, LocationWebActivity::class.java).apply {
                 putExtra(LocationWebActivity.EXTRA_LOCATION, location)
             }
@@ -84,7 +89,39 @@ class ItemPagerAdapter(
             null
         )
         notifyItemChanged(position)
+        sendReadNotification(item)
     }
 
+    @SuppressLint("MissingPermission")
+    private fun sendReadNotification(item: Item) {
+
+        val notificationManager = NotificationManagerCompat.from(context)
+
+
+        val channelId = "read_toggle_channel"
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channelName = "ReadToggleChannel"
+            val channel = NotificationChannel(
+                channelId, channelName, NotificationManager.IMPORTANCE_DEFAULT
+            )
+            notificationManager.createNotificationChannel(channel)
+        }
+
+
+        val message = if (item.read) {
+            "You liked ${item.binomialName}"
+        } else {
+            "You unliked ${item.binomialName}"
+        }
+
+        val builder = NotificationCompat.Builder(context, channelId)
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setContentTitle("Read Toggle")
+            .setContentText(message)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+
+        notificationManager.notify(item._id!!.toInt(), builder.build())
+    }
 
 }

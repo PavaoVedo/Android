@@ -1,27 +1,56 @@
 package hr.algebra.nasa
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import hr.algebra.nasa.databinding.ActivityHostBinding
+import hr.algebra.nasa.framework.getCurrentLanguage
+import hr.algebra.nasa.framework.setCurrentLanguage
+import java.util.Locale
 
 class HostActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHostBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        applyLanguage(getCurrentLanguage())
         handleTransition()
         binding = ActivityHostBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        askPermmision()
         initHamburgerMenu()
         initNavigation()
 
+    }
+
+    private fun applyLanguage(langCode: String) {
+        val locale = Locale(langCode)
+        Locale.setDefault(locale)
+
+        val config = resources.configuration
+        config.setLocale(locale)
+
+        @Suppress("DEPRECATION")
+        resources.updateConfiguration(config, resources.displayMetrics)
+    }
+
+    private fun askPermmision() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,
+                    arrayOf(Manifest.permission.POST_NOTIFICATIONS), 123)
+            }
+        }
     }
 
     private fun initHamburgerMenu() {
@@ -53,10 +82,19 @@ class HostActivity : AppCompatActivity() {
                 return true
             }
             R.id.miLanguage -> {
+                toggleLanguage()
                 return true
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun toggleLanguage() {
+        val currentLang = getCurrentLanguage()
+        val newLang = if (currentLang == "hr") "en" else "hr"
+        setCurrentLanguage(newLang)
+        applyLanguage(newLang)
+        recreate()
     }
 
     private fun exitApp() {
@@ -91,6 +129,5 @@ class HostActivity : AppCompatActivity() {
             @Suppress("DEPRECATION")
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }
-
     }
 }

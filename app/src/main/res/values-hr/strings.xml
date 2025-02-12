@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Životinje</string>
+    <string name="please_wait">Molim Pricekaj</string>
+    <string name="no_internet">Nema interneta</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_details">Aplikacija koja pokazuje zivotinje</string>
+    <string name="items">Stavke</string>
+    <string name="about">O nama</string>
+    <string name="exit">Izlaz</string>
+    <string name="do_you_really_want_to_exit">Želite li izaći?</string>
+    <string name="cancel">Odustani</string>
+    <string name="delete">Obriši</string>
+    <string name="sure_to_delete">Jeste li sigurni da želite obrisati?</string>
+    <string name="date">Datum</string>
+    <string name="title">Naslov</string>
+    <string name="explanation">Objašnjenje</string>
+    <string name="binomial_name">Binomno ime</string>
+    <string name="common_name">Obično ime</string>
+    <string name="location">Lokacija</string>
+    <string name="last_recorded">Zadnji zapis</string>
+    <string name="language">Jezik</string>
+</resources>
