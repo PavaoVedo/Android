@@ -10,10 +10,12 @@
     tools:context=".SplashScreenActivity">
 
     <ImageView
-        android:src="@drawable/flat_earth"
+        android:layout_marginTop="@dimen/_150dp"
+        android:src="@drawable/dino"
         android:id="@+id/ivSplash"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/_400dp" />
+        android:layout_height="@dimen/_100dp" />
+
 
     <TextView
         android:id="@+id/tvSplash"

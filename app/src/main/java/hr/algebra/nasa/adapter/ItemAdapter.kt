@@ -30,7 +30,7 @@ class ItemAdapter(
             tvItem.text = item.binomialName
             Picasso.get()
                 .load(File(item.imageSrc))
-                .error(R.drawable.nasa)
+                .error(R.drawable.dino_splash)
                 .transform(RoundedCornersTransformation(50, 5))
                 .into(ivItem)
         }

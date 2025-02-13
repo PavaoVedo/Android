@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            tools:src="@drawable/nasa"
+            tools:src="@drawable/dino_splash"
             android:id="@+id/ivItem"
             android:layout_width="@dimen/_50dp"
             android:layout_height="@dimen/_50dp" />

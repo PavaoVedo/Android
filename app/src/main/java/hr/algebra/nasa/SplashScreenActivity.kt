@@ -1,12 +1,9 @@
 package hr.algebra.nasa
 
-import android.content.pm.PackageManager
-import android.Manifest
-import android.os.Build
+import android.animation.AnimatorInflater
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
@@ -35,9 +32,14 @@ class SplashScreenActivity : AppCompatActivity() {
 
 
 
+    @SuppressLint("ResourceType")
     private fun startAnimations() {
-        binding.tvSplash.applyAnimation(R.anim.blink)
-        binding.ivSplash.applyAnimation(R.anim.rotate)
+        val rainbowAnimator = AnimatorInflater.loadAnimator(this, R.anim.rainbow)
+        rainbowAnimator.setTarget(binding.tvSplash)
+        rainbowAnimator.start()
+
+        binding.ivSplash.applyAnimation(R.anim.jump_up_down)
+
     }
 
     private fun redirect() {
